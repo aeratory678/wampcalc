@@ -11,14 +11,14 @@ const btnMinimize  = document.getElementById('btn-minimize');
 
 const SKINS = [
   { label: 'Card Captors Sakura',  folder: 'Card_Captors_Sakura_Cute' },
-  { label: 'Cuteamp',              folder: 'cuteamp' },
+  // { label: 'Cuteamp',              folder: 'cuteamp' },
   { label: 'Hello Kitty Cinnamon', folder: 'Hello Kitty - Cinnamoroll (Sickeningly Cute)' },
-  { label: 'Hello Kitty Angel',    folder: 'hello kitty angel' },
+  // { label: 'Hello Kitty Angel',    folder: 'hello kitty angel' },
   { label: 'Inuyasha',             folder: 'Inuyasha - Together Always 1' },
   { label: 'Kari',                 folder: 'Kari' },
   { label: 'Kirby',                folder: 'Kirby' },
   { label: 'NGE Misato',           folder: 'Neon Genesis Evangelion - My Misato Amp' },
-  { label: 'SariusVoiceGRID',      folder: 'SariusVoiceGRID' },
+  // { label: 'SariusVoiceGRID',      folder: 'SariusVoiceGRID' },
   { label: 'Lain',                 folder: 'Twilight_a_Lain_Skin' },
 ];
 
@@ -33,14 +33,14 @@ const state = {
   justEvaled:  false,
 };
 
-const CHAR_W = 9;
-const CHAR_H = 13;
+// const CHAR_W = 9;
+// const CHAR_H = 13;
 
-const DIGIT_OFFSETS = {
-  '0':  0, '1':  1, '2':  2, '3':  3, '4':  4,
-  '5':  5, '6':  6, '7':  7, '8':  8, '9':  9,
-  '-': 10, '.': 11,
-};
+// const DIGIT_OFFSETS = {
+//   '0':  0, '1':  1, '2':  2, '3':  3, '4':  4,
+//   '5':  5, '6':  6, '7':  7, '8':  8, '9':  9,
+//   '-': 10, '.': 11,
+// };
 
 function renderDisplay(value) {
   if (state.operator && state.previous !== null) {
@@ -56,31 +56,34 @@ function renderDisplay(value) {
 
   displayValue.innerHTML = '';
 
-  const wrapper = document.createElement('span');
-  wrapper.style.display    = 'inline-flex';
-  wrapper.style.alignItems = 'flex-end';
-  wrapper.style.gap        = '1px';
-  wrapper.style.lineHeight = '1';
+  // --- SPRITE RENDERER (commented out: numbers.bmp not displaying correctly) ---
+  // const wrapper = document.createElement('span');
+  // wrapper.style.display    = 'inline-flex';
+  // wrapper.style.alignItems = 'flex-end';
+  // wrapper.style.gap        = '1px';
+  // wrapper.style.lineHeight = '1';
+  //
+  // for (const ch of display) {
+  //   if (ch in DIGIT_OFFSETS) {
+  //     const span = document.createElement('span');
+  //     span.className = 'digit';
+  //     span.style.backgroundPosition = (-(DIGIT_OFFSETS[ch] * CHAR_W)) + 'px 0';
+  //     wrapper.appendChild(span);
+  //   } else {
+  //     const plain = document.createElement('span');
+  //     plain.textContent      = ch;
+  //     plain.style.fontSize   = (CHAR_H * 2) + 'px';
+  //     plain.style.fontFamily = 'Courier New, monospace';
+  //     plain.style.color      = 'var(--display-color)';
+  //     plain.style.textShadow = '0 0 6px var(--display-color)';
+  //     plain.style.fontWeight = 'bold';
+  //     wrapper.appendChild(plain);
+  //   }
+  // }
+  // displayValue.appendChild(wrapper);
+  // --- END SPRITE RENDERER ---
 
-  for (const ch of display) {
-    if (ch in DIGIT_OFFSETS) {
-      const span = document.createElement('span');
-      span.className = 'digit';
-      span.style.backgroundPosition = (-(DIGIT_OFFSETS[ch] * CHAR_W)) + 'px 0';
-      wrapper.appendChild(span);
-    } else {
-      const plain = document.createElement('span');
-      plain.textContent      = ch;
-      plain.style.fontSize   = (CHAR_H * 2) + 'px';
-      plain.style.fontFamily = 'Courier New, monospace';
-      plain.style.color      = 'var(--display-color)';
-      plain.style.textShadow = '0 0 6px var(--display-color)';
-      plain.style.fontWeight = 'bold';
-      wrapper.appendChild(plain);
-    }
-  }
-
-  displayValue.appendChild(wrapper);
+  displayValue.textContent = display;
 }
 
 function clearAll() {
@@ -198,16 +201,16 @@ buttonGrid.addEventListener('click', (e) => {
 });
 
 document.addEventListener('keydown', (e) => {
-  if (e.key >= '0' && e.key <= '9')        { inputDigit(e.key);                        return; }
-  if (e.key === '.')                        { inputDecimal();                            return; }
-  if (e.key === 'Enter' || e.key === '=')  { handleEquals();                            return; }
-  if (e.key === 'Escape')                   { clearAll();                                return; }
-  if (e.key === 'Backspace')                { handleBackspace();                         return; }
-  if (e.key === '+')                        { handleOperator('+');                       return; }
-  if (e.key === '-')                        { handleOperator('−');                       return; }
-  if (e.key === '*')                        { handleOperator('×');                       return; }
-  if (e.key === '/') { e.preventDefault();   handleOperator('÷');                       return; }
-  if (e.key === '%')                        { applyPercent();                            return; }
+  if (e.key >= '0' && e.key <= '9')        { inputDigit(e.key);          return; }
+  if (e.key === '.')                        { inputDecimal();              return; }
+  if (e.key === 'Enter' || e.key === '=')  { handleEquals();              return; }
+  if (e.key === 'Escape')                   { clearAll();                  return; }
+  if (e.key === 'Backspace')                { handleBackspace();           return; }
+  if (e.key === '+')                        { handleOperator('+');         return; }
+  if (e.key === '-')                        { handleOperator('−');         return; }
+  if (e.key === '*')                        { handleOperator('×');         return; }
+  if (e.key === '/') { e.preventDefault();   handleOperator('÷');         return; }
+  if (e.key === '%')                        { applyPercent();              return; }
 });
 
 btnClose.addEventListener('click', () => {
