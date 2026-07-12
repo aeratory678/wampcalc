@@ -1,0 +1,9 @@
+[text]
+current=#FFFFD2
+normal=#FF9DCE
+selectedbg=#D2BDDF
+normalbg=#E3DEED
+MBFG=#FFB9DC
+mbbg=#E3DEED
+font=Lucida Sans
+//Created by Skin Master
