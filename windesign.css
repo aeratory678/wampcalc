@@ -25,13 +25,18 @@ ul { list-style: none; }
   --display-color:  #b8ff9a;
   --display-border: rgba(255,255,255,0.10);
 
+  /* --- BUTTON COLOURS (commented out: too bright on some skins) ---
+  --btn-op-color:   #ffe066;
+  --btn-fn-color:   #aef0ff;
+  ----------------------------------------------------------------- */
+
   --btn-bg:         rgba(0, 0, 0, 0.35);
   --btn-hover:      rgba(255,255,255,0.20);
   --btn-active:     rgba(0, 0, 0, 0.60);
   --btn-color:      #ffffff;
-  --btn-op-color:   #ffe066;
+  --btn-op-color:   #ffffff;
   --btn-eq-color:   #ffffff;
-  --btn-fn-color:   #aef0ff;
+  --btn-fn-color:   #ffffff;
   --btn-border:     rgba(255,255,255,0.18);
 
   --panel-bg:       rgba(0, 0, 0, 0.85);
@@ -178,6 +183,7 @@ body {
   max-width: 100%;
 }
 
+/* --- DIGIT SPRITES (commented out: numbers.bmp not rendering correctly) ---
 .digit {
   display: inline-block;
   width: 9px;
@@ -201,6 +207,7 @@ body {
 .digit-9  { background-position: -81px 0; }
 .digit-dot { background-position: -90px 0; }
 .digit-neg { background-position: -99px 0; }
+---------------------------------------------------------------------------- */
 
 #button-grid {
   display: grid;
@@ -236,9 +243,15 @@ body {
 }
 
 .btn-num { color: var(--btn-color); }
+
+/* --- COLOURED BUTTON LABELS (commented out: contrast too harsh on some skins)
 .btn-fn  { color: var(--btn-fn-color); }
 .btn-op  { color: var(--btn-op-color); font-size: 14px; }
 .btn-eq  { color: var(--btn-eq-color); font-size: 14px; background-color: rgba(0,0,0,0.45); }
+---------------------------------------------------------------------------- */
+.btn-fn  { color: var(--btn-color); }
+.btn-op  { color: var(--btn-color); font-size: 14px; }
+.btn-eq  { color: var(--btn-color); font-size: 14px; background-color: rgba(0,0,0,0.45); }
 
 .btn-wide { grid-column: span 2; }
 
