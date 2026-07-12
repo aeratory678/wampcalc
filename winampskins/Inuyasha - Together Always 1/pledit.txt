@@ -1,0 +1,8 @@
+[Text]
+Normal=#90A2AC
+Current=#BC83C9
+NormalBG=#1B3B60
+SelectedBG=#24466D
+Font=bookman old style
+mbFG=#BC83C9
+mbBG=#1B3B60
