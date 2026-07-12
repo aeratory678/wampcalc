@@ -1,68 +1,78 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>WAMPCALC</title>
-        <link rel="stylesheet" href="windesign.css" />
-    </head>
-    <body>
-        <div id="page-wrapper">
-            <div id="calc-window">
-                <div id="title-bar">
-                    <span id="title-label">WAMPCALC</span>
-                    <div id="title-buttons">
-                        <button class="title-btn" id="btn-minimize" aria-label="Minimize">_</button>
-                        <button class="title-btn" id="btn-close" aria-label="Close">x</button>
-                    </div>
-                </div>
-                <div id="display-area">
-                    <div id="display-expression"></div>
-                    <div id="display-screen">
-                        <span id="display-value">0</span>
-                    </div>
-                </div>
-                <div id="button-grid">
-                    <button class="btn btn-fn" data-action="clear">AC</button>
-                    <button class="btn btn-fn" data-action="sign">+/-</button>
-                    <button class="btn btn-fn" data-action="percent">%</button>
-                    <button class="btn btn-op" data-action="operator" data-value="/">/</button>
-                    <button class="btn btn-num" data-action="digit" data-value="7">7</button>
-                    <button class="btn btn-num" data-action="digit" data-value="8">8</button>
-                    <button class="btn btn-num" data-action="digit" data-value="9">9</button>
-                    <button class="btn btn-op" data-action="operator" data-value="*">x</button>
-                    <button class="btn btn-num" data-action="digit" data-value="4">4</button>
-                    <button class="btn btn-num" data-action="digit" data-value="5">5</button>
-                    <button class="btn btn-num" data-action="digit" data-value="6">6</button>
-                    <button class="btn btn-op" data-action="operator" data-value="-">-</button>
-                    <button class="btn btn-num" data-action="digit" data-value="1">1</button>
-                    <button class="btn btn-num" data-action="digit" data-value="2">2</button>
-                    <button class="btn btn-num" data-action="digit" data-value="3">3</button>
-                    <button class="btn btn-op" data-action="operator" data-value="+">+</button>
-                    <button class="btn btn-num btn-wide" data-action="digit" data-value="0">0</button>
-                    <button class="btn btn-num" data-action="decimal">.</button>
-                    <button class="btn btn-eq" data-action="equals">=</button>
-                </div>
-                <div id="bottom-bar">
-                    <button id="gear-btn" aria-label="Change skin">gear</button>
-                </div>
-                <div id="skin-panel" class="hidden">
-                    <p id="skin-panel-title">Choose a skin</p>
-                    <ul id="skin-list">
-                        <li class="skin-option" data-skin="Card_Captors_Sakura_Cute">Card Captors Sakura</li>
-                        <li class="skin-option" data-skin="cuteamp">Cuteamp</li>
-                        <li class="skin-option" data-skin="Hello Kitty - Cinnamoroll (Sickeningly Cute)">Hello Kitty Cinnamoroll</li>
-                        <li class="skin-option" data-skin="hello kitty angel">Hello Kitty Angel</li>
-                        <Li class="skin-option" data-skin="Inuyasha - Together Always 1">Inuyasha</li>
-                        <li class="skin-option" data-skin="Kari">Kari</li>
-                        <li class="skin-option" data-skin="Kirby">Kirby</li>
-                        <li class="skin-option" data-skin="Neon Genesis Evangelion - My Misato Amp">NGE Misato</li>
-                        <li class="skin-option" data-skin="SariusVoiceGRID">SariusVoiceGRID</li>
-                        <li class="skin-option" data-skin="Twilight_a_Lain_Skin">Lain</li>
-                    </ul>
-                </div>
-            </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WAMPCALC</title>
+  <link rel="stylesheet" href="windesign.css" />
+</head>
+<body>
+  <div id="page-wrapper">
+    <div id="calc-window">
+
+      <div id="title-bar">
+        <span id="title-label">WAMPCALC</span>
+        <div id="title-buttons">
+          <button class="title-btn" id="btn-minimize" aria-label="Minimize">_</button>
+          <button class="title-btn" id="btn-close" aria-label="Close">×</button>
         </div>
-        <script src="amp.js"></script>
-    </body>
+      </div>
+
+      <div id="display-area">
+        <div id="display-expression"></div>
+        <div id="display-screen">
+          <span id="display-value">0</span>
+        </div>
+      </div>
+
+      <div id="button-grid">
+        <button class="btn btn-fn"  data-action="clear">AC</button>
+        <button class="btn btn-fn"  data-action="sign">+/-</button>
+        <button class="btn btn-fn"  data-action="percent">%</button>
+        <button class="btn btn-op"  data-action="operator" data-value="÷">÷</button>
+
+        <button class="btn btn-num" data-action="digit" data-value="7">7</button>
+        <button class="btn btn-num" data-action="digit" data-value="8">8</button>
+        <button class="btn btn-num" data-action="digit" data-value="9">9</button>
+        <button class="btn btn-op"  data-action="operator" data-value="×">×</button>
+
+        <button class="btn btn-num" data-action="digit" data-value="4">4</button>
+        <button class="btn btn-num" data-action="digit" data-value="5">5</button>
+        <button class="btn btn-num" data-action="digit" data-value="6">6</button>
+        <button class="btn btn-op"  data-action="operator" data-value="−">−</button>
+
+        <button class="btn btn-num" data-action="digit" data-value="1">1</button>
+        <button class="btn btn-num" data-action="digit" data-value="2">2</button>
+        <button class="btn btn-num" data-action="digit" data-value="3">3</button>
+        <button class="btn btn-op"  data-action="operator" data-value="+">+</button>
+
+        <button class="btn btn-num btn-wide" data-action="digit" data-value="0">0</button>
+        <button class="btn btn-num" data-action="decimal">.</button>
+        <button class="btn btn-eq"  data-action="equals">=</button>
+      </div>
+
+      <div id="bottom-bar">
+        <button id="gear-btn" aria-label="Change skin">⚙</button>
+      </div>
+
+      <div id="skin-panel" class="hidden">
+        <p id="skin-panel-title">Choose a skin</p>
+        <ul id="skin-list">
+          <li class="skin-option" data-skin="Card_Captors_Sakura_Cute">Card Captors Sakura</li>
+          <li class="skin-option" data-skin="cuteamp">Cuteamp</li>
+          <li class="skin-option" data-skin="Hello Kitty - Cinnamoroll (Sickeningly Cute)">Hello Kitty Cinnamoroll</li>
+          <li class="skin-option" data-skin="hello kitty angel">Hello Kitty Angel</li>
+          <li class="skin-option" data-skin="Inuyasha - Together Always 1">Inuyasha</li>
+          <li class="skin-option" data-skin="Kari">Kari</li>
+          <li class="skin-option" data-skin="Kirby">Kirby</li>
+          <li class="skin-option" data-skin="Neon Genesis Evangelion - My Misato Amp">NGE Misato</li>
+          <li class="skin-option" data-skin="SariusVoiceGRID">SariusVoiceGRID</li>
+          <li class="skin-option" data-skin="Twilight_a_Lain_Skin">Lain</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+  <script src="amp.js"></script>
+</body>
 </html>
