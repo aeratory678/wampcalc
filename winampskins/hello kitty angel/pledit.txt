@@ -1,0 +1,6 @@
+[Text]
+Normal=#FFFFC8
+Current=#DDFFDD
+NormalBG=#FF71B1
+SelectedBG=#BBDDFF
+Font=중간안상수체
