@@ -1,0 +1,26 @@
+255,255,255,   // Background
+255,255,255,   // Dots
+187,221,255,   // Analyzer
+185,220,255,   // Analyzer
+183,219,255,   // Analyzer
+181,218,255,   // Analyzer
+179,217,255,   // Analyzer
+177,216,255,   // Analyzer
+175,215,255,   // Analyzer
+173,214,255,   // Analyzer
+164,209,255,   // Analyzer
+163,209,255,   // Analyzer
+162,209,255,   // Analyzer
+161,209,255,   // Analyzer
+160,209,255,   // Analyzer
+159,209,255,   // Analyzer
+158,209,255,   // Analyzer
+157,209,255,   // Analyzer
+196,196,196,   // Osc
+160,160,160,   // Osc
+128,128,128,   // Osc
+92,92,92,      // Osc
+48,48,48,      // Osc
+255,196,255    // Peaks
+
+// This file was created by Skinamp
