@@ -4,9 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>WAMPCALC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Pixelify+Sans:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="windesign.css" />
 </head>
 <body>
+
+  <canvas id="rainbow-canvas"></canvas>
+  <canvas id="scratch-canvas"></canvas>
+
+  <div id="intro-overlay">
+    <div id="intro-content">
+      <div id="intro-line1" class="intro-line"></div>
+      <svg id="intro-arrow" viewBox="0 0 60 140" xmlns="http://www.w3.org/2000/svg">
+        <path id="arrow-path"
+          d="M 30 5 C 46 20, 14 36, 32 55 C 50 74, 16 89, 34 108 C 42 118, 30 128, 30 133"
+          fill="none" stroke="rgba(255,255,255,0.72)" stroke-width="2" stroke-linecap="round"/>
+        <path id="arrow-head"
+          d="M 23 127 L 30 134 L 37 127"
+          fill="none" stroke="rgba(255,255,255,0.72)" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div id="intro-line2" class="intro-line"></div>
+      <div id="intro-line3" class="intro-line intro-hint"></div>
+    </div>
+  </div>
+
   <div id="page-wrapper">
     <div id="calc-window">
 
@@ -63,7 +87,7 @@
           <li class="skin-option" data-skin="Hello Kitty - Cinnamoroll (Sickeningly Cute)">Hello Kitty Cinnamoroll</li>
           <!-- <li class="skin-option" data-skin="hello kitty angel">Hello Kitty Angel</li> -->
           <li class="skin-option" data-skin="Inuyasha - Together Always 1">Inuyasha</li>
-          <li class="skin-option" data-skin="Kari">Kari</li>
+          <!-- <li class="skin-option" data-skin="Kari">Kari</li> -->
           <li class="skin-option" data-skin="Kirby">Kirby</li>
           <li class="skin-option" data-skin="Neon Genesis Evangelion - My Misato Amp">NGE Misato</li>
           <!-- <li class="skin-option" data-skin="SariusVoiceGRID">SariusVoiceGRID</li> -->
@@ -73,6 +97,7 @@
 
     </div>
   </div>
+
   <script src="amp.js"></script>
 </body>
 </html>
