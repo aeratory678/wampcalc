@@ -362,8 +362,6 @@ async function runIntro() {
   arrowHead.style.opacity = '1';
   await sleep(400);
 
-  await typeText(introLine2, "the cutest calculator you'll ever see ✨", 50);
-  await sleep(500);
   await typeText(introLine3, 'scratch the background • draw anything', 45);
   await sleep(5500);
 
