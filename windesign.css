@@ -1,17 +1,7 @@
-*, *::before, *::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Pixelify+Sans:wght@400;700&display=swap');
 
-button {
-  font-family: inherit;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  background: none;
-}
-
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+button { font-family: inherit; cursor: pointer; border: none; outline: none; background: none; }
 ul { list-style: none; }
 
 :root {
@@ -20,45 +10,98 @@ ul { list-style: none; }
   --numbers-bg:    url('winampskins/Card_Captors_Sakura_Cute/numbers.bmp');
   --cbuttons-bg:   url('winampskins/Card_Captors_Sakura_Cute/cbuttons.bmp');
   --text-bg:       url('winampskins/Card_Captors_Sakura_Cute/text.bmp');
-
-  --display-bg:     rgba(0, 0, 0, 0.55);
+  --display-bg:     rgba(0,0,0,0.55);
   --display-color:  #b8ff9a;
   --display-border: rgba(255,255,255,0.10);
-
-  /* --- BUTTON COLOURS (commented out: too bright on some skins) ---
-  --btn-op-color:   #ffe066;
-  --btn-fn-color:   #aef0ff;
-  ----------------------------------------------------------------- */
-
-  --btn-bg:         rgba(0, 0, 0, 0.35);
+  --btn-bg:         rgba(0,0,0,0.35);
   --btn-hover:      rgba(255,255,255,0.20);
-  --btn-active:     rgba(0, 0, 0, 0.60);
+  --btn-active:     rgba(0,0,0,0.60);
   --btn-color:      #ffffff;
-  --btn-op-color:   #ffffff;
-  --btn-eq-color:   #ffffff;
-  --btn-fn-color:   #ffffff;
   --btn-border:     rgba(255,255,255,0.18);
-
-  --panel-bg:       rgba(0, 0, 0, 0.85);
+  --panel-bg:       rgba(0,0,0,0.90);
   --panel-color:    #ffffff;
 }
 
 body {
-  background: #111;
+  background: #000;
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: Arial, sans-serif;
+  font-family: 'Pixelify Sans', sans-serif;
   overflow: hidden;
 }
 
+#rainbow-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+#scratch-canvas {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 1;
+  cursor: crosshair;
+}
+
+#intro-overlay {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  transition: opacity 1.5s ease;
+}
+
+#intro-content {
+  position: absolute;
+  top: 12%;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  color: rgba(255,255,255,0.88);
+}
+
+.intro-line {
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  min-height: 42px;
+  white-space: nowrap;
+}
+
+.intro-hint {
+  font-size: 20px;
+  opacity: 0.65;
+  margin-top: 6px;
+}
+
+#intro-arrow {
+  width: 36px;
+  height: 84px;
+  display: block;
+  margin: 10px auto 10px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#arrow-head {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
 #page-wrapper {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 10;
+  pointer-events: none;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  height: 100vh;
 }
 
 #calc-window {
@@ -68,8 +111,9 @@ body {
   background-repeat: no-repeat;
   background-position: center top;
   position: relative;
-  box-shadow: 3px 3px 12px rgba(0,0,0,0.85),
-              0   0   0  1px rgba(255,255,255,0.08);
+  pointer-events: auto;
+  box-shadow: 3px 3px 18px rgba(0,0,0,0.95),
+              0 0 0 1px rgba(255,255,255,0.08);
   user-select: none;
   transition: background-image 0.2s ease;
 }
@@ -77,14 +121,11 @@ body {
 @media (min-width: 768px) {
   #calc-window {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 50%; left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 10;
   }
-
-  #calc-window.was-dragged {
-    transform: none;
-  }
+  #calc-window.was-dragged { transform: none; }
 }
 
 #title-bar {
@@ -101,12 +142,12 @@ body {
   padding: 0 4px;
   cursor: grab;
 }
-
 #title-bar:active { cursor: grabbing; }
 
 #title-label {
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 9px;
-  font-weight: bold;
+  font-weight: 700;
   letter-spacing: 1.5px;
   color: #fff;
   text-shadow: 0 0 4px rgba(0,0,0,0.9);
@@ -114,27 +155,19 @@ body {
   pointer-events: none;
 }
 
-#title-buttons {
-  display: flex;
-  gap: 2px;
-}
+#title-buttons { display: flex; gap: 2px; }
 
 .title-btn {
-  width: 14px;
-  height: 12px;
-  font-size: 8px;
-  line-height: 1;
+  width: 14px; height: 12px;
+  font-size: 8px; line-height: 1;
   color: #fff;
   background: rgba(0,0,0,0.35);
-  border: 1px solid rgba(255,255,255,0.25);
+  border: 1px solid rgba(255,255,255,0.25) !important;
   border-radius: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
   padding: 0;
   transition: background 0.1s;
 }
-
 .title-btn:hover  { background: rgba(255,255,255,0.2); }
 .title-btn:active { background: rgba(0,0,0,0.6); }
 
@@ -153,10 +186,10 @@ body {
 }
 
 #display-expression {
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 8px;
   color: var(--display-color);
   opacity: 0.6;
-  letter-spacing: 0.5px;
   min-height: 10px;
   text-align: right;
   width: 100%;
@@ -165,49 +198,19 @@ body {
   white-space: nowrap;
 }
 
-#display-screen {
-  width: 100%;
-  text-align: right;
-  overflow: hidden;
-}
+#display-screen { width: 100%; text-align: right; overflow: hidden; }
 
 #display-value {
+  font-family: 'Pixelify Sans', monospace;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   color: var(--display-color);
   letter-spacing: 2px;
-  font-family: 'Courier New', monospace;
   text-shadow: 0 0 6px var(--display-color);
   white-space: nowrap;
   display: inline-block;
   max-width: 100%;
 }
-
-/* --- DIGIT SPRITES (commented out: numbers.bmp not rendering correctly) ---
-.digit {
-  display: inline-block;
-  width: 9px;
-  height: 13px;
-  background-image: var(--numbers-bg);
-  background-repeat: no-repeat;
-  transform: scale(2.5);
-  transform-origin: top left;
-  image-rendering: pixelated;
-}
-
-.digit-0  { background-position:   0px 0; }
-.digit-1  { background-position:  -9px 0; }
-.digit-2  { background-position: -18px 0; }
-.digit-3  { background-position: -27px 0; }
-.digit-4  { background-position: -36px 0; }
-.digit-5  { background-position: -45px 0; }
-.digit-6  { background-position: -54px 0; }
-.digit-7  { background-position: -63px 0; }
-.digit-8  { background-position: -72px 0; }
-.digit-9  { background-position: -81px 0; }
-.digit-dot { background-position: -90px 0; }
-.digit-neg { background-position: -99px 0; }
----------------------------------------------------------------------------- */
 
 #button-grid {
   display: grid;
@@ -218,41 +221,25 @@ body {
 
 .btn {
   height: 36px;
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 700;
   color: var(--btn-color);
   background-color: var(--btn-bg);
   border: 1px solid var(--btn-border);
   border-radius: 2px;
-  position: relative;
   transition: background-color 0.08s, transform 0.05s;
   text-shadow: 0 1px 3px rgba(0,0,0,0.9);
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.12),
               inset 0 -1px 0 rgba(0,0,0,0.25);
 }
-
-.btn:hover {
-  background-color: var(--btn-hover);
-  z-index: 1;
-}
-
-.btn:active {
-  background-color: var(--btn-active);
-  transform: scale(0.96);
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
-}
+.btn:hover  { background-color: var(--btn-hover); z-index: 1; }
+.btn:active { background-color: var(--btn-active); transform: scale(0.96); box-shadow: inset 0 2px 4px rgba(0,0,0,0.5); }
 
 .btn-num { color: var(--btn-color); }
-
-/* --- COLOURED BUTTON LABELS (commented out: contrast too harsh on some skins)
-.btn-fn  { color: var(--btn-fn-color); }
-.btn-op  { color: var(--btn-op-color); font-size: 14px; }
-.btn-eq  { color: var(--btn-eq-color); font-size: 14px; background-color: rgba(0,0,0,0.45); }
----------------------------------------------------------------------------- */
 .btn-fn  { color: var(--btn-color); }
 .btn-op  { color: var(--btn-color); font-size: 14px; }
 .btn-eq  { color: var(--btn-color); font-size: 14px; background-color: rgba(0,0,0,0.45); }
-
 .btn-wide { grid-column: span 2; }
 
 #bottom-bar {
@@ -264,45 +251,36 @@ body {
 }
 
 #gear-btn {
-  font-size: 13px;
-  color: rgba(255,255,255,0.55);
-  line-height: 1;
-  transition: color 0.15s, transform 0.2s;
-  padding: 2px;
-}
-
-#gear-btn:hover {
-  color: rgba(255,255,255,0.9);
-  transform: rotate(30deg);
-}
-
-#gear-btn.active {
+  width: 18px; height: 18px;
+  font-size: 11px;
+  background: #000;
+  border: 1px solid rgba(255,255,255,0.45) !important;
+  border-radius: 50%;
   color: #fff;
-  transform: rotate(90deg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 0;
+  transition: border-color 0.15s, transform 0.25s;
+  line-height: 1;
 }
+#gear-btn:hover { border-color: rgba(255,255,255,0.9) !important; transform: rotate(40deg); }
+#gear-btn.active { border-color: #fff !important; transform: rotate(90deg); }
 
 #skin-panel {
   position: absolute;
-  bottom: 22px;
-  left: 0;
-  right: 0;
+  bottom: 22px; left: 0; right: 0;
   background: var(--panel-bg);
   border-top: 1px solid rgba(255,255,255,0.12);
   padding: 6px 0 4px 0;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(6px);
   transform: translateY(0);
   transition: transform 0.2s ease, opacity 0.2s ease;
   opacity: 1;
-  z-index: 10;
+  z-index: 20;
 }
-
-#skin-panel.hidden {
-  transform: translateY(100%);
-  opacity: 0;
-  pointer-events: none;
-}
+#skin-panel.hidden { transform: translateY(100%); opacity: 0; pointer-events: none; }
 
 #skin-panel-title {
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 8px;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -318,30 +296,19 @@ body {
 }
 
 .skin-option {
+  font-family: 'Pixelify Sans', sans-serif;
   font-size: 10px;
   color: var(--panel-color);
   padding: 5px 10px;
   cursor: pointer;
   transition: background 0.1s;
   border-left: 2px solid transparent;
+  pointer-events: auto;
 }
-
-.skin-option:hover {
-  background: rgba(255,255,255,0.10);
-  border-left-color: rgba(255,255,255,0.5);
-}
-
-.skin-option.active-skin {
-  color: var(--display-color);
-  border-left-color: var(--display-color);
-}
+.skin-option:hover { background: rgba(255,255,255,0.10); border-left-color: rgba(255,255,255,0.5); }
+.skin-option.active-skin { color: var(--display-color); border-left-color: var(--display-color); }
 
 #calc-window.minimized #button-grid,
 #calc-window.minimized #bottom-bar,
-#calc-window.minimized #skin-panel {
-  display: none;
-}
-
-#calc-window.minimized #display-area {
-  margin-bottom: 6px;
-}
+#calc-window.minimized #skin-panel { display: none; }
+#calc-window.minimized #display-area { margin-bottom: 6px; }
